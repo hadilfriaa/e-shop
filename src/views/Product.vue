@@ -3,14 +3,14 @@
         <div class="product__content" v-if="productItem">
             <TitlePage :title="productItem.title"/>
             <p>
-                Le prix est de : {{productItem.price}}
+                {{productItem.price | formatPrice }}
             </p>
         </div>
     </div>
 </template>
 
 <script>
-import TitlePage from '../components/TitlePage'
+    import TitlePage from "../components/TitlePage";
     export default {
         name:"Product",
         components:{
@@ -18,16 +18,17 @@ import TitlePage from '../components/TitlePage'
         },
         data: function() {
             return {
-                productItem: {}
+                productItem:{}
             }
         },
-        created(){
+        created() {
             fetch(`http://localhost:3030/api/v1/products/${this.$route.params.id}`)
             .then(res=>res.json())
-            .then((data) => {
+            .then((data)=>{
+                console.log(data);
                 this.productItem = data;
             })
-            .catch(err=> console.log(err))
+            .catch(err=> console.log(err));
         }
     }
 </script>

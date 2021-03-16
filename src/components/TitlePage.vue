@@ -1,18 +1,20 @@
 <template>
     <div class="title__page">
-        <h1>{{ title }}</h1>
+        <h1>
+            {{ title }}
+        </h1>
     </div>
 </template>
 
 <script>
-export default {
-    name: "TitlePage",
-    props: {
-        title: {
-            required: true
+    export default {
+        name:"TitlePage",
+        props: {
+            title: {
+                required: true
+            }
         }
     }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -22,7 +24,7 @@ export default {
             font-size: 30px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: grey;
+            color:grey;
         }
     }
 </style>
