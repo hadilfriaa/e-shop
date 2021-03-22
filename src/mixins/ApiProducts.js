@@ -4,12 +4,12 @@ export default {
     methods: {
         getProducts() {
             console.log(apiConfigs.apiUrl);
-            return fetch(`${apiConfigs.apiUrl}/products`)
+            return fetch(`${apiConfigs.apiUrl}/productsall`)
             .then(res=>res.json())
-        },
-        getProduct() {
+        }
+       // getProduct() {
         
-        },
+      //  },
         // etc //
     }
 }

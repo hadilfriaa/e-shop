@@ -38,7 +38,8 @@ import TitlePage from "../components/TitlePage";
             const token = localStorage.getItem('token');
             if(token) {
                const decodedToken = VueJwtDecode.decode(token);
-               fetch(`http://localhost:3030/api/v1/users/${decodedToken.id}`, {
+               console.log(decodedToken);
+               fetch(`http://localhost:3030/api/v1/users/${decodedToken.userId}`, {
                    headers: {
                        Authorization: token
                    }

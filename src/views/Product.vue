@@ -2,9 +2,12 @@
     <div class="product__page">
         <div class="product__content" v-if="productItem">
             <TitlePage :title="productItem.title"/>
+
+            <img :src="productItem.imageUrl"/>
             <p>
-                {{productItem.price | formatPrice }}
+                {{productItem.price}}
             </p>
+            
         </div>
     </div>
 </template>

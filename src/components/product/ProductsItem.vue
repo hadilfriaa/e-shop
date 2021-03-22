@@ -5,15 +5,21 @@
                 {{productsObject.title}}
             </h2>
         </router-link>
+
         <p>
             {{productsObject.price}}
+        </p>
+        <p>
+            <button @click="() => addItemToCart(productsObject)">Ajouter au panier</button>
         </p>
     </div>
 </template>
 
 <script>
+    import Cart from "../../mixins/Cart";
     export default {
         name: "ProductsItem",
+        mixins:[Cart],
         components: {
         },
         data: function(){
@@ -23,6 +29,12 @@
         props: {
             productsObject: Object
         },
+         methods:{
+            addItemToCart: function(product) {
+                console.log();
+                this.addTocart(product)
+            }
+        }
     }
 </script>
 
