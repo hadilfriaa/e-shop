@@ -4,7 +4,7 @@ export default {
         // QUand vous insérez en dans le localStorage => stringifier 
         // Le panier sera un tableau d'objet
         
-        addTocart(product) {
+        addToCart(product) {
             
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
