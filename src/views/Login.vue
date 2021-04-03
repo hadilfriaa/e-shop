@@ -1,7 +1,6 @@
 <template>
     <div class="login__form">
         <TitlePage title="Page de connexion"/>
-        <h1> je suis la</h1>
         <form @submit.prevent="login">
             <div class="form__group">
                 <label htmlFor="email"> Mail </label>
@@ -22,7 +21,11 @@
 </template>
 
 <script>
+import TitlePage from '../components/TitlePage';
  export default {
+          components: {
+            TitlePage
+        },
         data: function() {
             return {
                 email:"",
