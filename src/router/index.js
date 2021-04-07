@@ -7,7 +7,15 @@ import User from '../views/User.vue';
 import Product from "../views/Product.vue";
 import Login from "../views/Login.vue";
 import Category from "../views/Category.vue";
-import Favoris from "../views/Favoris.vue"
+import Favoris from "../views/Favoris.vue";
+import Cart from "../views/Cart.vue";
+import Sign from "../views/Sign.vue";
+import Dashboard from "../views/Dashboard.vue";
+import UserAd from "../views/UserAd.vue";
+import SignAd from "../views/SignAd.vue";
+import ProductAd from "../views/ProductAd.vue";
+import NewProduct from "../views/NewProduct.vue";
+
 
 Vue.use(VueRouter)
 
@@ -64,24 +72,24 @@ const routes = [
   {
     path: '/cart',
     name: 'Cart',
-    component: () => import(/* webpackChunkName: "Cart" */ '../views/Cart.vue')
+    component: Cart
   },
   {
     path: '/sign',
     name: 'Sign',
-    component: () => import(/* webpackChunkName: "Sign" */ '../views/Sign.vue')
-  },
+    component: Sign  
+},
   {
     path: '/dashboard',
     name: 'Dashboard',
-    component: () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue')
+    component: Dashboard  
   },
 
   {
     path: '/userAd',
     name: 'UserAd',
-    component: () => import(/* webpackChunkName: "dashboard" */ '../views/UserAd.vue')
-  },
+    component: UserAd
+    },
   {
     path: '/category',
     name: 'Category',
@@ -91,8 +99,23 @@ const routes = [
     path: '/favoris',
     name: 'Favoris',
     component: Favoris
+  },
+  {
+    path: '/signAd',
+    name: 'SignAd',
+    component: SignAd
+  },
+  {
+    path: '/productAd',
+    name: 'ProductAd',
+    component: ProductAd
+  },
+  {
+    path: '/newProduct',
+    name: 'NewProduct',
+    component: NewProduct
   }
-  
+
 
 
 ]
