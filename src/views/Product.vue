@@ -1,3 +1,4 @@
+
 <template>
     <div class="product__page">
         <div class="product__content" v-if="productItem">

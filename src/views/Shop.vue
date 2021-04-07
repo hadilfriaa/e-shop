@@ -1,7 +1,17 @@
 <template>
   <div class="page__shop">
     <TitlePage title="Mon Eshop" />
-    <ProductsGrid :productsArray="productsFromApi" />
+      <div class="search__form">
+        <input type="text" v-model="searchValue" @keyup="search">
+      </div>
+      <div class="input__content">
+        Résultat de votre recherche = {{searchValue}} <br>
+        Résultat de votre recherche precedente = {{oldSearchValue}}
+      </div>
+      <div class="search__content">
+        <ProductsGrid :productsArray="filteredShop"/>
+      </div>
+    <ProductsGrid :productsArray="productsFromApi"/>    
   </div>
 </template>
 
@@ -17,7 +27,25 @@ export default {
   data: function() {
     return {
       productsFromApi: [],
+      searchValue: "",
+      oldSearchValue: ""
     };
+  },
+  watch:{
+    searchValue: function (newValue, oldValue) {
+      this.oldSearchValue = oldValue
+    }
+  },
+  computed:{
+    filteredShop: function () {
+      let filter = new RegExp(this.searchValue, "i");
+      return this.productsFromApi.filter(item=>item.title.match(filter))
+    }
+  },
+  methods: {
+    search: function(){
+       console.log(this.searchValue)
+    }
   },
   mixins:[ApiProducts],
   created() {
@@ -30,4 +58,23 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.page__shop{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+.product__container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    background-color: burlywood;
+    width: auto;
+    border-radius: 10px;
+}
+
+</style>

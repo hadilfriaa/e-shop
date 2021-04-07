@@ -1,11 +1,7 @@
-export default {
-    methods: {
+export default{
 
-        // QUand vous insérez en dans le localStorage => stringifier 
-        // Le panier sera un tableau d'objet
-        
-        addToCart(product) {
-            
+    methods: {
+        addToCart(product){
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
             let productObject = {
@@ -13,39 +9,37 @@ export default {
                 title: product.title,
                 price: product.price,
                 qty: 1
-            }
-
-            console.log(productObject);
+            };
+            console.log(productObject)
 
             let indexOfExistingProduct = cart.findIndex(
-                (el) => el.id === productObject._id
+                (el) =>  el.id === productObject.id
             )
 
             if (indexOfExistingProduct !== -1) {
                 cart[indexOfExistingProduct].qty += 1
+
             }
-            else {
-                cart.push(productObject)
+            else{
+                cart.push(productObject);
+                console.log("Le produit à été ajouté")
             }
 
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-        },
-        getCart() {
-            return JSON.parse(localStorage.getItem('cart'));
-        },
-        removeItemCart(product) {
             
-            let card = JSON.parse(localStorage.getItem('cart'));
-
-            const filteredCard = card.filter((item) => {
-                return item.id !== product.id;
-            });
-
-            localStorage.setItem('cart', JSON.stringify(filteredCard));
-
+            localStorage.setItem('cart',JSON.stringify(cart));
         },
-        clearCart() {
+        getCart(){
+            return JSON.parse(localStorage.getItem('cart'))
+        },
+        removeItemCart(product){
+            let cart = JSON.parse(localStorage.getItem('cart'));
+
+            const filteredCart = cart.filter((item) => {
+                return item.id !== product.id
+            });
+            localStorage.setItem('cart', JSON.stringify(filteredCart));
+        },
+        clearCart(){
             localStorage.removeItem('cart');
         },
         removeOneQty(product) {
@@ -56,14 +50,15 @@ export default {
                     title: product.title,
                     price: product.price,
                     qty: 1
-                }
+                };
                 let indexOfExistingProduct = cart.findIndex((el) => el.id === productObject.id);
-                console.log(indexOfExistingProduct);
+                
                 if (indexOfExistingProduct != -1) {
-                    cart[indexOfExistingProduct].qty--;
+                    cart[indexOfExistingProduct].qty--
                 }
                 localStorage.setItem('cart', JSON.stringify(cart));
             }
+           
         },
         addOneQty(product) {
             let cart = JSON.parse(localStorage.getItem('cart'));
@@ -72,27 +67,23 @@ export default {
                 title: product.title,
                 price: product.price,
                 qty: 1
-            } 
-            console.log(productObject);
-            let indexOfExistingProduct = cart.findIndex((item) => item.id === productObject.id);
+            };
+            let indexOfExistingProduct = cart.findIndex((el) => el.id === productObject.id);
             if (indexOfExistingProduct != -1) {
-                cart[indexOfExistingProduct].qty++;
+                cart[indexOfExistingProduct].qty++
             }
             localStorage.setItem('cart', JSON.stringify(cart));
         },
-        getCartTotal(card) {
+        getCartTotal(card){
             let total = card.reduce(
-                (total, item) => total + (item.qty * item.price), 0
-            );
+                (total, item) => total + (item.qty * item.price), 0);
             return total;
         },
-        getCartCount(card) {
-        
+        getCartCount(card){
             let total = card.reduce(
-                (total, item) => total + item.qty, 0
-            );
+                (total, item) => total + item.qty, 0);
             return total;
         }
-    }
-        
+
+    },
 }

@@ -36,7 +36,7 @@
         <div>
             Totale: {{calcTotal}}
         </div>
-        <button @click="clearShopCart">Supprimer le panier</button>
+        <button @click="clearShopCart()">Supprimer le panier</button>
     </div>
 </template>
 
@@ -76,6 +76,7 @@ import Cart from "../mixins/Cart";
             clearShopCart: function() {
                 this.clearCart();
                 this.cartArray = this.getCart();
+                window.location.reload();
             }
         
         }
