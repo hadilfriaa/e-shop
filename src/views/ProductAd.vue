@@ -95,7 +95,6 @@
             modify: function(){
                 this.isclick = true;
                 this.show = false;
-//
             },
             
             update: function(){
