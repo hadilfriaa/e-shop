@@ -14,9 +14,13 @@
                 <input type="submit" value="se connecter" />
             </div>
         </form>
+        <router-link :to="{name: 'Sign'}">
+            <p> Vous n'êtes pas inscrit ? appuyez ici   </p>
+        </router-link>
         <p v-if="messageError">
             {{messageError}}
         </p>
+        
     </div>
 </template>
 
@@ -30,7 +34,8 @@ import TitlePage from '../components/TitlePage';
             return {
                 email:"",
                 password:"",
-                messageError:""
+                messageError:"",
+                //IsAdmin:false
             }
         },
         methods: {
@@ -50,13 +55,19 @@ import TitlePage from '../components/TitlePage';
                 fetch("http://localhost:3030/api/v1/users/login",requestOptions)
                 .then (res => res.json())
                 .then((data) => {
+                    //this.IsAdmin= data.IsAdmin;
+
                         if(!data.auth) {
                             this.messageError = data.message;
-                        }
+                        }//else if( this.IsAdmin == true){
+                         //       console.log("je suis la ");
+                        //}
                         else {
                             let token = data.token;
                             localStorage.setItem('token',token);
                             this.$router.push('/account');
+                            window.location.reload();
+                             
                         }
                     }
                 )

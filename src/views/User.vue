@@ -91,6 +91,7 @@ import TitlePage from "../components/TitlePage";
             logout: function() {
                 localStorage.removeItem('token');
                 this.isLogged = false;
+                 window.location.reload();
             },
             modify: function(){
                 this.isclick = true;
@@ -142,6 +143,7 @@ import TitlePage from "../components/TitlePage";
             }
         },
         mounted() {
+
             const token = localStorage.getItem('token');
             if(token) {
                const decodedToken = VueJwtDecode.decode(token);
