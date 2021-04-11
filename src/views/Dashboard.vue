@@ -3,22 +3,33 @@
        
         <TitlePage title="Bienvenue sur le dashboard Admin"/>
         <div class="user">
-            <UsersGrid :usersArray="usersFromApi" />
-            <router-link :to="{name: 'SignAd'}">
+            <router-link :to="{name: 'DashUser'}">
                 <button class="btn btn-black">
-                    Créer un utilisateur
+                    gérer les utilisateurs
                 </button>
             </router-link>
         </div>
         <div class="product">
-            <div class="product__content" v-if="productItem">
-                <ProductsGridAd :productsArray="productsFromApi"/> 
-            </div>
-            <router-link :to="{name: 'NewProduct'}">
-            <button class="btn btn-black">
-                Créer un article
-            </button>
-        </router-link>
+           <router-link :to="{name: 'DashProduct'}">
+                <button class="btn btn-black">
+                    gérer les articles
+                </button>
+            </router-link>
+        </div>
+        <div class="categories">
+           <router-link :to="{name: 'DashCategory'}">
+                <button class="btn btn-black">
+                    gérer les catégories
+                </button>
+            </router-link>
+        </div>
+
+        <div class="orders">
+              <router-link :to="{name: 'DashOrder'}">
+                <button class="btn btn-black">
+                    gérer les commandes
+                </button>
+            </router-link>
         </div>
 
     </div>
@@ -31,6 +42,10 @@ import UsersGrid from '../components/user/UsersGrid';
 import ApiUsers from '../mixins/ApiUsers'
 import ProductsGridAd from '../components/productAdmin/ProductsGridAd'
 import ApiProducts from '../mixins/ApiProducts'
+import CategoriesGridAd from '../components/categoryAdmin/CategoriesGridAd.vue';
+import ApiCategories from '../mixins/ApiCategories';
+import OrderAdGrid from '../components/orderAdmin/OrderAdGrid';
+import ApiOrders from '../mixins/ApiOrders';
 
     export default {
      name: "Dashboard",
@@ -38,17 +53,24 @@ import ApiProducts from '../mixins/ApiProducts'
             TitlePage,
             UsersGrid,
             Button,
-            ProductsGridAd
+            ProductsGridAd,
+            CategoriesGridAd,
+            OrderAdGrid
         },
         data: function () {
             return {
                 usersFromApi: [],
                 productsFromApi: [],
-                 productItem:{}
+                productItemAd:{},
+                categoriesFromApi:[],
+                categoriesItemAd:{},
+                ordersFromApi:[],
+                orderAdItem:{}
+
 
             };
         },
-        mixins:[ApiUsers, ApiProducts],
+        mixins:[ApiUsers, ApiProducts, ApiCategories,ApiOrders],
         created(){
             this.getAllUser()
                 .then((data) => {
@@ -57,10 +79,22 @@ import ApiProducts from '../mixins/ApiProducts'
                 .catch((err) => console.log(err));
 
             this.getProducts()
-            .then((data) => {
-                this.productsFromApi = data;
-            })
-            .catch((err) => console.log(err));
+                .then((data) => {
+                    this.productsFromApi = data;
+                })
+                .catch((err) => console.log(err));
+
+            this.getCategoryAll()
+                .then((data) => {
+                    this.categoriesFromApi = data;
+                })
+                .catch((err) => console.log(err));
+
+            this.getOrdersAll()
+                .then((data) => {
+                    this.ordersFromApi = data;
+                })
+                .catch((err) => console.log(err));
         }
     }
 </script>
