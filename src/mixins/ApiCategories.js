@@ -6,7 +6,7 @@ export default {
             return fetch(`${apiConfigs.apiUrl}/categoryAll`).then((res) => res.json());
         },
         getCategoryId(){
-            return fetch(`${apiConfigs.apiUrl}/category/`).then((res) => res.json());
+            return fetch(`${apiConfigs.apiUrl}/category/${this.$route.params.id}`).then((res) => res.json());
         }
     }
 };
