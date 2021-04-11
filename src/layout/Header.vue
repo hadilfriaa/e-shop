@@ -12,24 +12,30 @@
             <router-link to="/sign">s'inscrire</router-link> |
             <router-link to="/login">Connexion</router-link> |
             <router-link to="/cart">Mon panier</router-link> |
-            <router-link to="/dashboard">Dashboard</router-link> |
             <router-link to="/favoris">Favoris</router-link> |
+            <router-link to="/order">Commande</router-link> |
+            <router-link to="/dashboard">Dashboard</router-link> |
 
-
-          <!--  <div v-if="user.isAdmin == true">
-               
-            </div> -->
 
         </div>
     </header>
 </template>
 
 <script>
+import VueJwtDecode from "vue-jwt-decode";
+
 export default {
+    
     setup () {
         
 
-        return {}
+        return {
+            user:{},
+        }
+    },
+    methods: {
+      
+
     }
 }
 </script>

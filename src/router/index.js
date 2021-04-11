@@ -12,9 +12,18 @@ import Cart from "../views/Cart.vue";
 import Sign from "../views/Sign.vue";
 import Dashboard from "../views/Dashboard.vue";
 import UserAd from "../views/UserAd.vue";
-import SignAd from "../views/SignAd.vue";
+import NewUserAd from "../views/NewUserAd.vue";
 import ProductAd from "../views/ProductAd.vue";
 import NewProduct from "../views/NewProduct.vue";
+import CategoryAd from "../views/CategoryAd.vue";
+import NewCategory from "../views/NewCategory.vue";
+import Order from "../views/Order.vue";
+import OrderAd from "../views/OrderAd.vue";
+import DashUser from "../views/DashUser.vue";
+import DashProduct from "../views/DashProduct.vue";
+import DashCategory from "../views/DashCategory.vue";
+import DashOrder from "../views/DashOrder.vue";
+
 
 
 Vue.use(VueRouter)
@@ -101,9 +110,9 @@ const routes = [
     component: Favoris
   },
   {
-    path: '/signAd',
-    name: 'SignAd',
-    component: SignAd
+    path: '/newUserAd',
+    name: 'NewUserAd',
+    component: NewUserAd
   },
   {
     path: '/productAd',
@@ -114,7 +123,47 @@ const routes = [
     path: '/newProduct',
     name: 'NewProduct',
     component: NewProduct
-  }
+  },
+  {
+    path: '/categoryAd',
+    name: 'CategoryAd',
+    component: CategoryAd
+  },
+  {
+    path: '/newCategory',
+    name: 'NewCategory',
+    component: NewCategory
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: Order
+  },
+  {
+    path: '/orderAd',
+    name: 'OrderAd',
+    component: OrderAd
+  },
+  {
+    path: '/dashUser',
+    name: 'DashUser',
+    component: DashUser
+  },
+  {
+    path: '/dashProduct',
+    name: 'DashProduct',
+    component: DashProduct
+  },
+  {
+    path: '/dashCategory',
+    name: 'DashCategory',
+    component: DashCategory
+  },
+  {
+    path: '/dashOrder',
+    name: 'DashOrder',
+    component: DashOrder
+  },
 
 
 
