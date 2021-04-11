@@ -6,8 +6,7 @@
         <div class="categery__content">
 
             <ProductsItem 
-            v-for="product in products" :key="product._id" :productsObject="product"
-        />
+            v-for="product in products" :key="product._id" :productsObject="product"/>
 
             
         </div>
