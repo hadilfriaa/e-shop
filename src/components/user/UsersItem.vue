@@ -9,10 +9,6 @@
           <p> Nom: {{usersObject.lastName}} </p>
           <p> Mail: {{usersObject.email}} </p>
           <p> Telephone: {{usersObject.telephone}} </p>
-          <p> Adresse: {{usersObject.rue}}
-                    {{usersObject.cp}}
-                    {{usersObject.ville}}
-            </p>
         </div>
     </div>
 </template>
