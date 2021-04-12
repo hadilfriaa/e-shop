@@ -2,18 +2,18 @@
 <template>
     <div class="product__page">
         <div v-if="show">
-            <div class="product__content" v-if="productItemAd">
+            <div class="product__form" v-if="productItemAd">
                 <TitlePage :title="productItemAd.title"/>
 
-                <img :src="productItemAd.imageUrl"/>
-                <p>
+                <img class="image__product" :src="productItemAd.imageUrl"/>
+                <p class="price__product">
+                    {{productItemAd.price}} €
+                </p>
+                <p class="description_product">
                     {{productItemAd.description}}
                 </p>
-                <p>
-                    {{productItemAd.price}}
-                </p>
-                <button @click="modify">Modifier le produit</button>
-                <button @click="delet">Supprimer le produit</button>
+                <button class="btn--modify" @click="modify">Modifier le produit</button>
+                <button class="btn--delete" @click="delet">Supprimer le produit</button>
                 
             </div>
         </div>
@@ -42,7 +42,7 @@
                     </div>
     
                     <div class="form__group">
-                        <input type="submit" value="update" />
+                        <input class="btn--update" type="submit" value="update" />
                     </div>
                 </form>
         </div>  
@@ -122,7 +122,7 @@
                             console.log(data.error);
                             this.messageError = data.error;
                         } else {
-                            this.$router.push('/dashboard');
+                            this.$router.push('/dashProduct');
                         }
                 })
                 .catch(err => console.log(err));
@@ -147,14 +147,21 @@
 
 <style lang="scss" scoped>
 .Sign__form {
-        width: 500px;
-        border: 1px solid #CCCCCC;
-        border-radius: 4px;
-        background-color: #FFFFFF;
-        margin: auto;
-        margin-top: 50px;
-        padding: 20px;
-    }
+    width: 500px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.form__group{
+    font-family: monospace;
+
+}
+
+
 
 .inpt{
     width: 350px;
@@ -165,5 +172,66 @@
     border: 1px solid #CCCCCC;
     border-radius: .25rem;
     margin-bottom: 30px;
+    font-family: monospace;
 }
+
+.product__form{
+    width: 600px;
+    height: auto;
+    border: 2px solid #c4c4c4c4;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: 5px 5px 5px #c4c4c4c4;
+    font-family: monospace;
+
+}
+.image__product{
+    width: 400px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.price__product {
+  text-align: right;
+  margin-right: 100px;
+  font-weight: bold;
+
+}
+.btn--modify{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+ 
+}
+
+.btn--update{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+}
+
+.btn--delete{
+ background-color: #F70000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 20px;
+ 
+}
+
 </style>

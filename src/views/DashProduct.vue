@@ -3,14 +3,12 @@
        
         <TitlePage title="Gérer les articles"/>
         <div class="product">
+            <router-link class="btn--create" :to="{name: 'NewProduct'}">
+                Créer un article
+            </router-link>
             <div class="product__content" v-if="productItemAd">
                 <ProductsGridAd :productsArray="productsFromApi"/> 
             </div>
-            <router-link :to="{name: 'NewProduct'}">
-                <button class="btn btn-black">
-                    Créer un article
-                </button>
-            </router-link>
         </div>
 
     </div>
@@ -50,5 +48,24 @@ import ApiProducts from '../mixins/ApiProducts'
 </script>
 
 <style lang="scss" scoped>
+
+.btn--create{
+  background-color: #B3EEFF;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+  text-decoration: none;
+ 
+}
+
+.btn--create:hover{
+  background-color: #F70000; 
+  color: #FFFFFF;
+  font-weight: bold;
+
+}
     
 </style>

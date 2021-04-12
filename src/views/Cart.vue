@@ -1,13 +1,15 @@
 <template>
    <div class="shopping__cart">
+    <TitlePage title="Votre panier"/>
+
         <table class="shop__table">
             <thead>
                 <tr>
                     <th>Titre</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th>Quantité</th>
+                    <th>Prix</th>
                     <th></th>
-                     <th>Total</th>
+                     <th>Totale</th>
                     <th></th>
                 </tr>
             </thead>
@@ -17,28 +19,28 @@
                     <td>{{item.qty}}</td>
                     <td>{{item.price}}</td>
                     <td>
-                        <button @click="removeItemCart(item)">-</button>
-                        <button @click="addItemCart(item)">+</button>
+                        <button class="btn--rem" @click="removeItemCart(item)">-</button>
+                        <button  class="btn--add" @click="addItemCart(item)">+</button>
                     </td>
                     <td>
                         {{item.qty *item.price }} €
                     </td>
                     <td>
-                        <button @click="removeProductCart(item)">Supprimer le produit</button>
+                        <button class="btn--delete" @click="removeProductCart(item)">Supprimer le produit</button>
                     </td>
                    
                 </tr>
             </tbody>
         </table>
-        <div>
+        <div class="calc">
             Nombre d'article: {{calcQty}}
         </div>
 
-        <div>
+        <div class="calc">
             Totale: {{calcTotal}}
         </div>
-        <button @click="clearShopCart()">Supprimer le panier</button>
-        <button @click="getOrder(cartArray)">Payer</button>
+        <button class="btn--delete" @click="clearShopCart()">Supprimer le panier</button>
+        <button class="btn--pay" @click="getOrder(cartArray)">Payer</button>
 
     </div>
 </template>
@@ -46,7 +48,12 @@
 <script>
 import Cart from "../mixins/Cart";
 import VueJwtDecode from "vue-jwt-decode";
+import TitlePage from "../components/TitlePage";
+
     export default {
+        components: {
+            TitlePage
+        },
         mixins:[Cart],
         data: function() {
             return {
@@ -62,21 +69,18 @@ import VueJwtDecode from "vue-jwt-decode";
             console.log("je suis cartarray"+this.cartArray)
             const parseObj = JSON.parse(JSON.stringify(this.cartArray))
             for (this.i = 0; this.i < parseObj.length; this.i++) {
-            console.log("jesuis this i"+ this.i);
-                console.log(`Je suis les ids parse ${parseObj[this.i].id}`)
 
                 this.idProducts.push(parseObj[this.i].id)
-                 console.log(`Je suis parseObj : ${parseObj[this.i].id}`)
-                console.log(`Je suis idProducts: ${this.idProducts}`)
+                
 
             }
 
             const token = localStorage.getItem('token');
             if(token) {
                 const decodedToken = VueJwtDecode.decode(token);
-                console.log(`Je suis le token ${token}`)
+                
                 this.idUser = decodedToken.userId
-                console.log(`Je suis this.idUser ${this.idUser}`)
+                
             }
             else{
                 console.log(`Je ne decode pas le token`)
@@ -117,11 +121,11 @@ import VueJwtDecode from "vue-jwt-decode";
             .then((data) => {
                 if(data.error) {
                     console.log(data.error);
-                    console.log(`Je suis l'erreur : ${data}`)
+                    
                     this.messageError = data.error;
                 } else {
                     this.$router.push('/order');
-                    console.log("Je suis la date actuelle = "+this.dateActuel)
+                    
                 }
             })
             .catch(err => console.log(err));
@@ -151,4 +155,90 @@ import VueJwtDecode from "vue-jwt-decode";
 </script>
 
 <style lang="scss" scoped>
+
+.shopping__cart{
+    width: 800px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    
+        
+}
+
+table {
+width: 100%;
+box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+border-radius: 5px;
+margin-bottom: 30px;
+
+}
+th {
+font-family: monospace;
+font-weight: bold;
+width: 50%;
+padding: 5px;
+background-color: #B3EEFF;
+}
+td {
+font-family: monospace;
+font-weight: bold;
+width: 50%;
+padding: 5px;
+text-align: center;
+background-color: #ffffff;
+}
+
+.btn--rem{
+  background-color: #F70000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+}
+
+.btn--add{
+  background-color: #B3EEFF;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.btn--delete{
+  background-color: #F70000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-size: 10px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.btn--pay{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-size: 10px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.calc{
+    font-family: monospace;
+    font-weight: bold;
+}
+
 </style>

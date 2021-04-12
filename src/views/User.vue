@@ -4,14 +4,20 @@
         <div  v-if="isLogged">
             <div v-if="show">
             <div class="user__info" v-if="user">
-                <p>Nom :{{user.firstName}}</p>
-                <p>Prénom :{{user.lastName}}</p>
-                <p>Numéro de téléphone :{{user.telephone}}</p>
-                <p>Email :{{user.email}}</p>
-                <p> Adresse : {{user.address.rue}} {{user.address.cp}} ,</p>
-                <p> {{user.address.ville}} , {{user.address.pays}} </p>
-                <button @click="logout">Se déconnecter</button>
-                <button @click="modify">modifier le profil</button>
+                <div class="fix">Nom : </div> <div class="info">{{user.lastName}}</div>
+                <br>
+                <div class="fix">Prénom : </div> <div class="info">{{user.firstName}}</div>
+                <br>
+                <div class="fix">Numéro de téléphone : </div> <div class="info"> 0{{user.telephone}}</div>
+                <br>
+                <div class="fix">Email : </div> <div class="info"> {{user.email}}</div>
+                <br>
+                <div class="fix"> Adresse : </div> <div class="info">{{user.address.rue}} {{user.address.cp}} ,</div>
+                <div class="info"> {{user.address.ville}} , {{user.address.pays}} </div>
+                <div>
+                    <button class="btn--logout" @click="logout">Se déconnecter</button>
+                    <button class="btn--modify" @click="modify">modifier mon profil </button>
+                </div>
             </div>
             </div>
             <div v-if="isclick && user">
@@ -48,7 +54,7 @@
                     
                     
                     <div class="form__group">
-                        <input type="submit" value="update" />
+                        <input class="btn--update" type="submit" value="update" />
                     </div>
                 </form>
             </div>
@@ -175,15 +181,34 @@ import TitlePage from "../components/TitlePage";
 </script>
 
 <style lang="scss" scoped>
+
+.user__info{
+    font-family: monospace;
+    width: auto;
+    height: auto;
+
+}
+.fix{
+    display: inline-block;
+    text-align: left;
+    font-weight: bold;
+    margin:10px;
+}
+
+.info{
+    display: inline-block;
+    text-align: center;
+}
+
 .profil__form {
-        width: 500px;
-        border: 1px solid #CCCCCC;
-        border-radius: 4px;
-        background-color: #FFFFFF;
-        margin: auto;
-        margin-top: 50px;
-        padding: 20px;
-    }
+    width: 500px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+}
 
 .inpt{
     width: 350px;
@@ -195,4 +220,39 @@ import TitlePage from "../components/TitlePage";
     border-radius: .25rem;
     margin-bottom: 30px;
 }
+
+.btn--logout{
+ background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 20px;
+ 
+}
+
+.btn--modify{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+ 
+}
+
+.btn--update{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+}
+
 </style>

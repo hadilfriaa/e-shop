@@ -1,16 +1,22 @@
 <template>
     <div class="userAd__form">
-        <TitlePage title="Gerer le profil"/>
+        <TitlePage title="Gérer le profil"/>
         <div v-if="show">
             <div class="user__info" v-if="UserItem">
-                <p>Nom :{{firstName}}</p>
-                <p>Prénom :{{lastName}}</p>
-                <p>Numéro de téléphone :{{telephone}}</p>
-                <p>Email :{{email}}</p>
-                <p> Adresse : {{rue}} {{cp}} ,</p>
-                <p> {{ville}} , {{pays}} </p>
-                <button @click="delet"> Supprimer l'utilisateur</button>
-                <button @click="modify">modifier l'utilisateur</button>
+                <div  class="fix">Nom : </div> <div class="info"> {{firstName}}</div>
+                <br>
+                <div  class="fix">Prénom : </div> <div class="info">{{lastName}}</div>
+                <br>
+                <div  class="fix">Numéro de téléphone : </div> <div class="info"> {{telephone}}</div>
+                <br>
+                <div  class="fix">Email : </div> <div class="info">{{email}}</div>
+                <br>
+                <div  class="fix"> Adresse : </div> <div class="info"> {{rue}} {{cp}} ,</div>
+                <br>
+                <div class="info"> {{ville}} , {{pays}} </div>
+                <br>
+                <button class="btn--delete" @click="delet"> Supprimer l'utilisateur</button>
+                <button class="btn--modify" @click="modify">modifier l'utilisateur</button>
             </div>
         </div>
 
@@ -49,7 +55,7 @@
                     
                     
                     <div class="form__group">
-                        <input type="submit" value="update" />
+                        <input class="btn--update" type="submit" value="update" />
                     </div>
                 </form>
         </div>  
@@ -145,7 +151,7 @@ import TitlePage from "../components/TitlePage";
                         console.log(data.error);
                         this.messageError = data.error;
                     } else {
-                        this.$router.push('/dashboard');
+                        this.$router.push('/dashUser');
                     }
                 })
                 .catch(err => console.log(err));
@@ -186,15 +192,36 @@ import TitlePage from "../components/TitlePage";
 </script>
 
 <style lang="scss" scoped>
-.profil__form {
-        width: 500px;
-        border: 1px solid #CCCCCC;
-        border-radius: 4px;
-        background-color: #FFFFFF;
-        margin: auto;
-        margin-top: 50px;
-        padding: 20px;
-    }
+
+.user__info{
+    font-family: monospace;
+    width: auto;
+    height: auto;
+
+}
+.userAd__form {
+    width: 500px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    font-family: monospace;
+
+}
+
+.fix{
+    display: inline-block;
+    text-align: left;
+    font-weight: bold;
+    margin:10px;
+}
+
+.info{
+    display: inline-block;
+    text-align: center;
+}
 
 .inpt{
     width: 350px;
@@ -206,4 +233,39 @@ import TitlePage from "../components/TitlePage";
     border-radius: .25rem;
     margin-bottom: 30px;
 }
+
+.btn--modify{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+ 
+}
+
+.btn--update{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+}
+
+.btn--delete{
+ background-color: #F70000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 20px;
+ 
+}
+
 </style>

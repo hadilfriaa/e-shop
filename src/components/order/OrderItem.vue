@@ -1,12 +1,15 @@
 <template>
     <div>
-        <div class="order__card" v-if="ordersObject">
-                <h2>
-                    Votre numéro de commande est : {{ordersUser._id}}
+        <div class="order">
+            <div class="order__card" v-if="ordersObject">
+
+                <h2 class="title">
+                    Numéro de la commande: {{ordersUser._id}}
                 </h2>
-                <h3>Votre commande à été réalisé le : {{ordersUser.date}}</h3>
-                <h4>Votre commande est : {{ordersUser.status}}</h4>
-               
+                <h3> Commande passée le : </h3> {{ordersUser.date}}
+                <h4>Commande est :</h4> <p class="status"> {{ordersUser.status}} </p>
+
+            </div>
         </div>
     </div>
 </template>
@@ -26,16 +29,11 @@
             ordersObject: String,
         },
         created() {
-            // for (this.i = 0; this.i < this.ordersUser.products.length; this.i++) {
-            //     console.log(this.i)                
-            // }
             console.log(`Je suis ordersObject in OrdersItem = ${this.ordersObject}`)
             fetch(`http://localhost:3030/api/v1/order/${this.ordersObject}`)
             .then(res=>res.json())
             .then((data) => {
-                console.log("Je suis data dans orderItem =",data)
                 this.ordersUser = data
-                console.log("Je suis ordersUser dans orderItem = ",this.ordersUser)
             })
             .catch(err=> console.log(err))
         },
@@ -45,5 +43,27 @@
 </script>
 
 <style lang="scss" scoped>
+
+.order__card{
+    width: 500px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: auto;
+}
+.title{
+    font-family: monospace;
+    font-weight: bold;
+
+}
+.status{
+    font-family: monospace;
+    font-weight: bold;
+
+}
+.order{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
 
 </style>

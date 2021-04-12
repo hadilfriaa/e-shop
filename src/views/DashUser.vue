@@ -3,12 +3,12 @@
        
         <TitlePage title="Gérer les utilisateurs"/>
         <div class="user">
-            <UsersGrid :usersArray="usersFromApi" />
-            <router-link :to="{name: 'NewUserAd'}">
-                <button class="btn btn-black">
+            <router-link class="btn--create" :to="{name: 'NewUserAd'}">
                     Créer un utilisateur
-                </button>
             </router-link>
+
+            <UsersGrid :usersArray="usersFromApi" />
+            
         </div>
        
     </div>
@@ -49,4 +49,23 @@ import ApiUsers from '../mixins/ApiUsers'
 
 <style lang="scss" scoped>
     
+.btn--create{
+  background-color: #B3EEFF;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+  
+  text-decoration: none;
+ 
+}
+
+.btn--create:hover{
+  background-color: #F70000; 
+  color: #FFFFFF;
+  font-weight: bold;
+
+}
 </style>

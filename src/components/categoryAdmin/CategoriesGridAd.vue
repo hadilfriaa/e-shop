@@ -19,11 +19,16 @@ import CategoriesItemAd from './CategoriesItemAd'
             CategoryArray: Array,
         },
         created(){
-            console.log("je suis category array dans gridAd"+this.CategoryArray);
         }
     }
 </script>
 
 <style lang="scss" scoped>
+.category__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px 0em;
+  margin-top: 20px;
+}
 
 </style>

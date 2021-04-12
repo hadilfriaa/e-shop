@@ -19,11 +19,17 @@ import OrderAdItem from './OrderAdItem'
             ordersArray: Array
         },
         created() {
-            console.log(`Je suis ordersArray in OrdersGrid = ${this.ordersArray}`)
         },
     }
 </script>
 
 <style lang="scss" scoped>
+
+.order__grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px 0em;
+  margin-top: 20px;
+}
 
 </style>

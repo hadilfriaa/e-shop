@@ -25,4 +25,10 @@ import ProductsItem from './ProductsItem'
 </script>
 
 <style lang="scss" scoped>
+
+.products__grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px 0em;
+}
 </style>

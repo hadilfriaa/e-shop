@@ -25,4 +25,11 @@ import UsersItem from './UsersItem'
 </script>
 
 <style lang="scss" scoped>
+.users__grid{
+    margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px 0em;
+
+}
 </style>

@@ -8,8 +8,8 @@
 
                     <p>     {{products}}    </p>
 
-                    <button @click="modify">Modifier la catégorie</button>
-                    <button @click="delet">Supprimer la catégorie</button>
+                    <button class="btn--modify" @click="modify">Modifier la catégorie</button>
+                    <button class="btn--delete" @click="delet">Supprimer la catégorie</button>
             
                 </div>
             </div>
@@ -20,14 +20,9 @@
                         <label htmlFor="title"> title </label>
                         <input class="inpt" type="text" name="title"  v-model="title" />
                     </div>
-                    <div class="form__group">
-                        <label htmlFor="products"> products </label>
-                        <input class="inpt" type="text" name="products"  v-model="products" />
-                    </div>
                    
-    
                     <div class="form__group">
-                        <input type="submit" value="update" />
+                        <input class="btn--update" type="submit" value="update" />
                     </div>
                 </form>
             </div>
@@ -36,7 +31,6 @@
 </template>
 
 <script>
-    import VueJwtDecode from "vue-jwt-decode";
     import TitlePage from "../components/TitlePage";
     export default {
         name:"CategoryAd",
@@ -57,7 +51,6 @@
         methods: {
             delet: function() {
                const token = localStorage.getItem('token');
-                const decodedToken = VueJwtDecode.decode(token);
                 return fetch(`http://localhost:3030/api/v1/category/delete/${this.$route.params.id}`, {
                 
                    headers: {
@@ -70,7 +63,7 @@
                         console.log(data.error);
                         this.messageError = data.error;
                     } else {
-                        this.$router.push('/dashboard');
+                        this.$router.push('/dashCategory');
                     }
                 })
                 .catch(err => console.log(err));
@@ -100,7 +93,7 @@
                             console.log(data.error);
                             this.messageError = data.error;
                         } else {
-                            this.$router.push('/dashboard');
+                            this.$router.push('/dashCategory');
                         }
                 })
                 .catch(err => console.log(err));
@@ -143,5 +136,39 @@
     border: 1px solid #CCCCCC;
     border-radius: .25rem;
     margin-bottom: 30px;
+}
+
+.btn--modify{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+ 
+}
+
+.btn--update{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+}
+
+.btn--delete{
+ background-color: #F70000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 20px;
+ 
 }
 </style>

@@ -9,7 +9,7 @@
                     <h3>Date de la commande: {{date}}</h3>
                     <h4>La commande est : {{status}}</h4>
 
-                    <button @click="modify">Modifier le status </button>
+                    <button class="btn--modify" @click="modify">Modifier le status </button>
             
                 </div>
             </div>
@@ -24,7 +24,7 @@
                    
     
                     <div class="form__group">
-                        <input type="submit" value="update" />
+                        <input class="btn--update" type="submit" value="update" />
                     </div>
                 </form>
             </div>
@@ -75,7 +75,7 @@
                             console.log(data.error);
                             this.messageError = data.error;
                         } else {
-                            this.$router.push('/dashboard');
+                            this.$router.push('/dashOrder');
                         }
                 })
                 .catch(err => console.log(err));
@@ -99,6 +99,21 @@
 </script>
 
 <style lang="scss" scoped>
+
+
+
+.order__content{
+    width: auto;
+     font-family: monospace;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    
+}
+
 .Sign__form {
         width: 500px;
         border: 1px solid #CCCCCC;
@@ -119,4 +134,26 @@
     border-radius: .25rem;
     margin-bottom: 30px;
 }
+
+.btn--modify{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+ 
+}
+
+.btn--update{
+  background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+}
+
 </style>

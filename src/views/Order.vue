@@ -1,8 +1,9 @@
 <template>
     <div class="page__order">
-        <TitlePage title="Mon Commandes"/>
-        <div>
-           
+        
+        <div class="order__container">
+           <TitlePage title="Mes Commandes"/>
+
             <OrderGrid :ordersArray="ordersId"/>
 
         </div>
@@ -34,7 +35,6 @@ export default {
             const token = localStorage.getItem('token');
             if(token) {
                 const decodedToken = VueJwtDecode.decode(token);
-                console.log("Je suis l'id decodé = "+decodedToken.userId);
                fetch(`http://localhost:3030/api/v1/users/${decodedToken.userId}`, {
                    headers: {
                        Authorization: token
@@ -43,12 +43,8 @@ export default {
                 .then (res => res.json())
                 .then((data) => {
                     this.ordersFromApi = data;
-                    console.log(`Je suis data dans order.vue ${data.orders}`)
-                    console.log(`Je suis ordersFromApi in Orders = ${this.ordersFromApi.orders}`)
-                    console.log('Je suis lid de la liste de this.ordersFromApi = '+ this.ordersFromApi.orders[0])
                     for (let index = 0; index < this.ordersFromApi.orders.length; index++) {
                         this.ordersId.push(this.ordersFromApi.orders[index])
-                        console.log(`Je suis ordersId = ${this.ordersId}`)
                     }
                 })
                 .catch((err) => console.log(err));
@@ -59,21 +55,18 @@ export default {
 
 <style lang="scss" scoped>
 
-.page__shop{
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-}
-.product__container{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    background-color: burlywood;
+.order__container{
+    background-image: url(../assets/bgadd.png);;
     width: auto;
-    border-radius: 10px;
+     font-family: monospace;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    
 }
+
+
 </style>

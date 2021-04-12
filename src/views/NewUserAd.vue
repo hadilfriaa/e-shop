@@ -44,7 +44,7 @@
                 <input class="inpt" type="password" name="password" v-model="password" />
             </div>
             <div class="form__group">
-                <input type="submit" value="s'inscrire" />
+                <input class="btn--sign" type="submit" value="s'inscrire" />
             </div>
         </form>
         <p v-if="messageError">
@@ -132,4 +132,20 @@ import TitlePage from '../components/TitlePage';
     margin-bottom: 30px;
 }
 
+.btn--sign{
+  background-color: #ffff;
+  color: #000000;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+}
+
+.btn--sign:hover{
+  background-color: #B3EEFF; 
+  color: #FFFFFF;
+  font-weight: bold;
+
+}
 </style>

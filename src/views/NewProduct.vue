@@ -24,7 +24,7 @@
             </div>
 
             <div class="form__group">
-                <input type="submit" value="create" />
+                <input class="btn--sign" type="submit" value="create" />
             </div>
         </form>
         <p v-if="messageError">
@@ -72,7 +72,7 @@ import TitlePage from '../components/TitlePage';
                         console.log(data.error);
                         this.messageError = data.error;
                     } else {
-                        this.$router.push('/dashboard');
+                        this.$router.push('/dashProduct');
                     }
                 })
                 .catch(err => console.log(err));
@@ -83,14 +83,15 @@ import TitlePage from '../components/TitlePage';
 
 <style lang="scss" scoped>
 .Sign__form {
-        width: 500px;
-        border: 1px solid #CCCCCC;
-        border-radius: 4px;
-        background-color: #FFFFFF;
-        margin: auto;
-        margin-top: 50px;
-        padding: 20px;
-    }
+    width: 500px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    font-family: monospace;
+ }
 
 .inpt{
     width: 350px;
@@ -101,6 +102,22 @@ import TitlePage from '../components/TitlePage';
     border: 1px solid #CCCCCC;
     border-radius: .25rem;
     margin-bottom: 30px;
+}
+.btn--sign{
+  background-color: #ffff;
+  color: #000000;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+}
+
+.btn--sign:hover{
+  background-color: #B3EEFF; 
+  color: #FFFFFF;
+  font-weight: bold;
+
 }
 
 </style>

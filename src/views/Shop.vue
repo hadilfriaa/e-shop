@@ -1,27 +1,30 @@
 <template>
   <div class="page__shop">
-    <TitlePage title="Mon Eshop" />
       <div class="search__form">
-        <input type="text" v-model="searchValue" @keyup="search">
+        <h3> Vous cherchez un article en particulier ?</h3>
+        <img class="search__img" src="../assets/search.png" alt="">
+        <input class="search__input" type="text" placeholder="Entrez le nom de l'article" v-model="searchValue" @keyup="search">
       </div>
+      <!--
       <div class="input__content">
         Résultat de votre recherche = {{searchValue}} <br>
         Résultat de votre recherche precedente = {{oldSearchValue}}
       </div>
-      <div class="search__content">
+      -->
+
+      <div v-if="searchValue"  class="search__content">
         <ProductsGrid :productsArray="filteredShop"/>
       </div>
+
     <ProductsGrid :productsArray="productsFromApi"/>    
   </div>
 </template>
 
 <script>
-import TitlePage from '../components/TitlePage';
 import ProductsGrid from '../components/product/ProductsGrid';
 import ApiProducts from '../mixins/ApiProducts';
 export default {
   components: {
-    TitlePage,
     ProductsGrid,
   },
   data: function() {
@@ -75,6 +78,24 @@ export default {
     background-color: burlywood;
     width: auto;
     border-radius: 10px;
+}
+
+.search__input{
+    width: 550px;
+    height:30px;
+    text-align: center;
+    color: black;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.search__img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:10px;
 }
 
 </style>

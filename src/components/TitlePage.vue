@@ -24,6 +24,7 @@
             font-size: 30px;
             letter-spacing: 2px;
             text-transform: uppercase;
+            font-family: monospace;
             color:grey;
         }
     }

@@ -6,13 +6,8 @@
                 <label htmlFor="title"> title </label>
                 <input class="inpt" type="text" name="title"  v-model="title" />
             </div>
-             <div class="form__group">
-                <label htmlFor="description"> entrez les id de chaque produit suivi d'une virgule </label>
-                <input class="inpt" type="text" name="products"  v-model="products" />
-            </div>
-
             <div class="form__group">
-                <input type="submit" value="create" />
+                <input class="btn--sign" type="submit" value="create" />
             </div>
         </form>
         <p v-if="messageError">
@@ -33,7 +28,6 @@ import TitlePage from '../components/TitlePage';
 
                 title: "",
                 description: "",
-                products:[],
 
                 messageError: ""
             }
@@ -44,8 +38,7 @@ import TitlePage from '../components/TitlePage';
                     method: "POST",
                     headers: {"Content-Type":"Application/json"},
                     body: JSON.stringify( {
-                        title: this.title,
-                        products: this.products,
+                        title: this.title
                        
                     })
                 })
@@ -56,7 +49,7 @@ import TitlePage from '../components/TitlePage';
                         console.log(data.error);
                         this.messageError = data.error;
                     } else {
-                        this.$router.push('/dashboard');
+                        this.$router.push('/dashCategory');
                     }
                 })
                 .catch(err => console.log(err));
@@ -74,6 +67,8 @@ import TitlePage from '../components/TitlePage';
         margin: auto;
         margin-top: 50px;
         padding: 20px;
+        font-family: monospace;
+
     }
 
 .inpt{
@@ -85,6 +80,23 @@ import TitlePage from '../components/TitlePage';
     border: 1px solid #CCCCCC;
     border-radius: .25rem;
     margin-bottom: 30px;
+}
+
+.btn--sign{
+  background-color: #ffff;
+  color: #000000;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+}
+
+.btn--sign:hover{
+  background-color: #B3EEFF; 
+  color: #FFFFFF;
+  font-weight: bold;
+
 }
 
 </style>

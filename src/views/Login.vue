@@ -11,11 +11,11 @@
                 <input class="inpt" type="password" name="password" v-model="password" />
             </div>
             <div class="form__group">
-                <input type="submit" value="se connecter" />
+                <input  class="btn--login" type="submit" value="se connecter" />
             </div>
         </form>
-        <router-link :to="{name: 'Sign'}">
-            <p> Vous n'êtes pas inscrit ? appuyez ici   </p>
+        <router-link class="sign__link" :to="{name: 'Sign'}">
+            <p> Toujours pas inscrit ? Rejoins vite la Teams Sneakers'Addict !  </p>
         </router-link>
         <p v-if="messageError">
             {{messageError}}
@@ -59,8 +59,9 @@ import TitlePage from '../components/TitlePage';
 
                         if(!data.auth) {
                             this.messageError = data.message;
-                        }//else if( this.IsAdmin == true){
-                         //       console.log("je suis la ");
+                        }
+                        //else if( data.IsAdmin == true){
+                        //      console.log("je suis data loging ", data);
                         //}
                         else {
                             let token = data.token;
@@ -81,14 +82,16 @@ import TitlePage from '../components/TitlePage';
 
 <style lang="scss" scoped>
 .login__form {
-        width: 500px;
-        border: 1px solid #CCCCCC;
-        border-radius: 4px;
-        background-color: #FFFFFF;
-        margin: auto;
-        margin-top: 50px;
-        padding: 20px;
-    }
+    width: 500px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    font-family: monospace;
+
+}
 
 .inpt{
     width: 350px;
@@ -99,6 +102,31 @@ import TitlePage from '../components/TitlePage';
     border: 1px solid #CCCCCC;
     border-radius: .25rem;
     margin-bottom: 30px;
+}
+
+.btn--login{
+ background-color: #000000;
+  color: #fff;
+  padding: 8px 20px;
+  border: 2px solid ;
+  border-radius: 8px;
+  transition: all 0.3s ease-out;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.btn--login:hover{
+ background-color: #B3EEFF; 
+  color: #292929;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+.sign__link{
+    color: #252e48;
+    text-decoration: none;
+    font-family: monospace;
+    font-weight: bold;
 }
 
 </style>

@@ -1,26 +1,41 @@
 <template>
-    <div>
-        
-    <TitlePage title="Page Contact"/>
-    <Button buttonClass="btn btn-black" btn__text="Click Me" v-bind:btn__function="clickMe" />
+    <div class="contact__form">
+    <TitlePage title="Contactez nous par mail !"/>
+
+        <h4 class="service"> Service Client : </h4>
+        <h5 class="service"> service-client@hx.fr</h5>
+
+        <h4> Support : </h4>
+        <h5> support@hx.fr</h5>
     </div>
 </template>
 
 <script>
     import TitlePage from "../components/TitlePage";
-    import Button from "../components/Button";
 
     export default {
     name: "Contact",
         components: {
             TitlePage,
-            Button
         },
         data: function() {
             return {
                 title: "Page contact",
-                btn__text: "Clique ici"
             }
         }
     }
 </script>
+<style lang="scss" scoped>
+.contact__form {
+    width: 500px;
+    height: 400px;
+    border: 2px solid #c4c4c4c4;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
+    box-shadow: 5px 5px 5px #c4c4c4c4;
+}
+
+</style>

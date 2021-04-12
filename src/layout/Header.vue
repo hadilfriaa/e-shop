@@ -3,7 +3,6 @@
         <nav class="navbar">
             <div class="navbar-container">
                 <img src="../assets/logo.png" alt="logo">
-                
                 <ul class="nav-menu">
                     <li class="nav-item">
                         <router-link class="nav-router" to="/">Home</router-link> 
@@ -31,13 +30,13 @@
                     <li class="nav-item" v-if="isLogged == false">
                         <router-link class="nav-router" to="/login">Connexion</router-link> 
                     </li>
-                        
-                    <li class="nav-item">
-                        <router-link class="nav-router" to="/cart">Mon panier</router-link> 
-                    </li>
 
                     <li class="nav-item" v-if="isLogged == true">
                         <router-link class="nav-router" to="/favoris">Favoris</router-link> 
+                    </li>
+                    
+                    <li class="nav-item" v-if="isLogged == true" >
+                        <router-link class="nav-router" to="/cart">Mon panier</router-link> 
                     </li>
 
                     <li class="nav-item" v-if="isLogged == true">
@@ -98,6 +97,9 @@ export default {
   position: sticky;
   top: 0;
   z-index: 999;
+  margin-bottom: 80px;
+  font-family: monospace;
+
 }
 .navbar-container {
   display: flex;
@@ -135,5 +137,72 @@ export default {
 }
 
 
+
+
+@media screen and (max-width: 960px) {
+    #wrap:target {
+  transform: translate3d(0, 0, 0); /* affiche l'élément */
+    }
+
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90vh;
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav-menu.active {
+    background: #242222;
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .nav-router {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+  }
+
+  .nav-router:hover {
+    background-color: #fff;
+    color: #242424;
+    border-radius: 0;
+  }
+
+  .navbar-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(25%, 50%);
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+
+
+
+
+
+
+  
+
+  
+}
 
 </style>
