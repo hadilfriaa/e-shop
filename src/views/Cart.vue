@@ -111,7 +111,7 @@ import TitlePage from "../components/TitlePage";
                     },
                 body: JSON.stringify( {
                     total:  1000,
-                    status: "En cours",
+                    status: "En cours de traitement ",
                     date: this.dateActuel,
                     user: mySelf.idUser,
                     products: mySelf.idProducts,
