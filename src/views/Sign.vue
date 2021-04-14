@@ -103,7 +103,7 @@ import TitlePage from '../components/TitlePage';
                         console.log(data.error);
                         this.messageError = data.error;
                     } else {
-                        this.$router.push('/dashboard');
+                        this.$router.push('/login');
                     }
                 })
                 .catch(err => console.log(err));
